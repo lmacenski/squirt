@@ -47,6 +47,7 @@ void loop() {
     if (command == '4') { //Relay Down
       down();
       }
+  }
 }
 
 void right() {
