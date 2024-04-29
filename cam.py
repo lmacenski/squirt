@@ -9,6 +9,11 @@ ser = serial.Serial('/dev/tty.usbmodem14201', 9600)
 
 # Define a video capture object
 vid = cv2.VideoCapture(0)
+framex = int(vid.get(cv2.CAP_PROP_FRAME_WIDTH)) // 2
+framey = int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT)) // 2
+print(x)
+print(y)
+
 
 
 while True:
@@ -31,18 +36,24 @@ while True:
         # Calculate and print the center coordinates of the face
         center_x = x + w // 2
         center_y = y + h // 2
-        if(center_x > x/2):
+        #print(center_x)
+        #print(center_y)
+        if(center_x > framex):
             ser.write(b'right')  
             time.sleep(1)
-        elif(center_x < x/2):
+            print("r")
+        elif(center_x < framex):
             ser.write(b'left')  
             time.sleep(1)
-        if(center_y > y/2):
+            print("l")
+        if(center_y > framey):
             ser.write(b'down')  
             time.sleep(1)
-        if(center_y < y/2):
+            print("d")
+        if(center_y < framey):
             ser.write(b'up')  
             time.sleep(1)
+            print("u")
 
 
     
