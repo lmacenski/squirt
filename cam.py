@@ -31,8 +31,18 @@ while True:
         # Calculate and print the center coordinates of the face
         center_x = x + w // 2
         center_y = y + h // 2
-        #print("Center coordinates of the face:", (center_x, center_y))
-        #cv2.putText(frame, str(center_x), c_position, font, fontScale, color, thickness, cv2.LINE_AA)
+        if(center_x > x/2):
+            ser.write(b'right')  
+            time.sleep(1)
+        elif(center_x < x/2):
+            ser.write(b'left')  
+            time.sleep(1)
+        if(center_y > y/2):
+            ser.write(b'down')  
+            time.sleep(1)
+        if(center_y < y/2):
+            ser.write(b'up')  
+            time.sleep(1)
 
 
     
@@ -56,11 +66,11 @@ while True:
         text1 = result[0]["dominant_emotion"]
         print("Emotion: ", text1)
         if(text1 == "sad" or text1 == "angry"):
-            ser.write(b'1')  # Send the command to turn on the LED
-            time.sleep(1)    # Delay for 1 second before sending the next command
+            ser.write(b'1')  
+            time.sleep(1)    
         else:
-            ser.write(b'2')  # Send the command to turn on the LED
-            time.sleep(1)    # Delay for 1 second before sending the next command
+            ser.write(b'2')  
+            time.sleep(1)    
 
         cv2.putText(frame, text1, e_position, font, fontScale, color, thickness, cv2.LINE_AA)
         cv2.imshow('frame', frame)
