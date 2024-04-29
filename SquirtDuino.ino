@@ -35,16 +35,16 @@ void loop() {
     if (command == '2') { //Relay Low
       digitalWrite(relay, LOW);      
       }
-    if (command == '3') { //Relay Left
+    if (command == 'left') { //Relay Left
       left();
       }
-    if (command == '4') { //Relay Right
+    if (command == 'right') { //Relay Right
       right();
       }
-    if (command == '5') { //Relay Up
+    if (command == 'up') { //Relay Up
       up();
       }
-    if (command == '4') { //Relay Down
+    if (command == 'down') { //Relay Down
       down();
       }
   }
