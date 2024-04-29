@@ -11,8 +11,8 @@ ser = serial.Serial('/dev/tty.usbmodem14201', 9600)
 vid = cv2.VideoCapture(0)
 framex = int(vid.get(cv2.CAP_PROP_FRAME_WIDTH)) // 2
 framey = int(vid.get(cv2.CAP_PROP_FRAME_HEIGHT)) // 2
-print(x)
-print(y)
+#print(x)
+#print(y)
 
 
 
