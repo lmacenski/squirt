@@ -10,7 +10,7 @@ Servo servoVertical;   // servo for up/down movement
 // Define positions
 int posHorizontal = 90; // initial position for servoHorizontal (centered)
 int posVertical = 90;   // initial position for servoVertical (centered)
-int increment = 15;     // amount to increment servo position
+int increment = 5;     // amount to increment servo position
 
 // Define limits
 int minHorizontal = 0;   // minimum position for servoHorizontal
@@ -21,8 +21,9 @@ int maxVertical = 180;   // maximum position for servoVertical
 void setup() {
   Serial.begin(9600);
   // Attach servos to pins
-  servoHorizontal.attach(0); // attach servoHorizontal to pin 0
-  servoVertical.attach(1);   // attach servoVertical to pin 1
+  servoHorizontal.attach(9); // attach servoHorizontal to pin 0
+  servoVertical.attach(10);   // attach servoVertical to pin 1
+  pinMode(relay, OUTPUT);
 }
 
 void loop() {
@@ -35,16 +36,16 @@ void loop() {
     if (command == '2') { //Relay Low
       digitalWrite(relay, LOW);      
       }
-    if (command == 'left') { //Relay Left
+    if (command == 'l') { //Relay Left
       left();
       }
-    if (command == 'right') { //Relay Right
+    if (command == 'r') { //Relay Right
       right();
       }
-    if (command == 'up') { //Relay Up
+    if (command == 'u') { //Relay Up
       up();
       }
-    if (command == 'down') { //Relay Down
+    if (command == 'd') { //Relay Down
       down();
       }
   }
