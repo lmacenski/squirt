@@ -38,23 +38,25 @@ while True:
         center_y = y + h // 2
         #print(center_x)
         #print(center_y)
-        if(center_x > framex):
-            ser.write(b'right')  
-            time.sleep(1)
-            print("r")
-        elif(center_x < framex):
-            ser.write(b'left')  
+        a = 30
+
+        # Control the device based on face position
+        if (center_x + a > framex and center_x - a > framex ):
+            ser.write(b'l')  
             time.sleep(1)
             print("l")
-        if(center_y > framey):
-            ser.write(b'down')  
+        elif (center_x + a < framex and center_x - a < framex ):
+            ser.write(b'r')  
             time.sleep(1)
-            print("d")
-        if(center_y < framey):
-            ser.write(b'up')  
+            print("r")
+        if(center_y + a > framey and center_y - a > framey):
+            ser.write(b'u')  
             time.sleep(1)
             print("u")
-
+        elif(center_y + a < framey and center_y - a < framey):
+            ser.write(b'd')  
+            time.sleep(1)
+            print("d")
 
     
 
